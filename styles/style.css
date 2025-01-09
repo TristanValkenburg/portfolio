@@ -30,9 +30,9 @@
 
     --darkToDark: linear-gradient(to top, rgb(22, 21, 20), rgb(52, 50, 46));
 
-    --boxShadow1: 0 1rem 2rem rgba(36, 36, 36, 0.264);
+    --boxShadow1: rgba(0, 0, 0, 0.4) 0px 20px 60px;
     --boxShadow2: 0 0 2rem rgba(36, 36, 36, 0.16);
-    --boxShadow3: 0 0 .5rem rgba(233, 214, 194, 0.293);
+    --boxShadow3: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;;
     --boxShadow4: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
     --headerFont: "headline-gothic-atf", sans-serif;
@@ -106,6 +106,7 @@ p,
 li{
     font-family: var(--pFont);
     font-size: 1.6rem;
+    letter-spacing: 0.02em;
 }
 
 main > section{
@@ -128,6 +129,10 @@ h2,
     background-color: #d2c4b671;
     backdrop-filter: blur(.5rem) brightness(150%);
 }
+
+
+
+
 
   /******************/
   /* HEADER STYLING */
@@ -188,10 +193,10 @@ main{
 }
 
 main > div:first-of-type{
-    height: 65vh;
+    height: 60vh;
     width: 100vw;
     position: absolute;
-    bottom: 4rem;
+    bottom: 3rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -230,6 +235,7 @@ main > div:first-of-type ul li{
     border-radius: .5rem;
     font-family: var(--headerFont);
     font-weight: 100;
+    white-space: nowrap;
 }
 
 main > div:first-of-type ul li:has(span){
@@ -248,8 +254,7 @@ main > div:first-of-type ul li span{
 
 
 /* hide for mobile */
-main > div:first-of-type ul li:nth-of-type(1),
-main > div:first-of-type ul li:nth-of-type(2){
+main > div:first-of-type ul li:not(:nth-last-of-type(1), :nth-last-of-type(2)){
     display: none;
 }
 
@@ -258,45 +263,88 @@ main > div:first-of-type div:hover img{
     transform: translate(0, 0);
 }
 
-main > div:first-of-type ul li:hover{
+main > div:first-of-type ul li:not(:has(span)):hover,
+main > div:first-of-type ul li span:hover{
     transform: translate(.5rem, 0);
 }
 
 
-/* ACTING REEL */
-section.reel{
-    transition-duration: .8s;
-    height: 100vh;
-    width: 97vw;
-    
+
+
+/* RESUME */
+
+section.resume > div{
+    /* width: calc(var(--secWidth) * 2); */
+    max-width: 97vw;
 }
 
-section.reel div{
-    position: sticky;
-    top: 35vh;
-    margin: 4rem 0;
-    height: calc(97vw / 16 * 9);
-    max-height: calc(var(--secWidth) / 16 * 9);
-    width: 100%;
-    overflow: hidden;
-    border-radius: 1rem;
-    outline: 0 solid #00000062;
-    z-index: 5;
+section.resume div h3{
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
 }
+
+section.resume div ul{
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+section.resume div ul li{
+    margin-bottom: .5rem;
+    width: 100%;
+    display: flex;
+}  
+
+section.resume div ul li p{
+    width: 40%;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: .02em;
+}
+
+section.resume div ul li span{
+    width: 60%;
+    height: 2.5rem;
+    border-radius: 1rem;
+    background-color: var(--color1T);
+    overflow: hidden;
+}
+
+section.resume div ul li span div{
+    height: 100%;
+    padding-left: 1.5rem;
+    color: var(--bg);
+    border-radius: inherit;
+    background-color: var(--offBlack);
+    transform: translate(-.5rem, 0);
+    align-content: center;
+}
+
+section.resume > div > div{
+    margin: -.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section.resume div div p{
+    height: fit-content;
+    margin: .5rem;
+    padding: .2rem .5rem;
+    font-size: 2.3rem;
+    font-weight: 100;
+    background-color: var(--color1T);
+    border-radius: .5rem;
+    white-space: nowrap;
+}
+
+
 
 /* HOVER */
-/* section.reel:has(> div:hover) h2{
-    opacity: 0;
-    margin-bottom: -3vw;
+
+section.resume div ul li:hover span div{
+    transform: translate(0, 0);
+    box-shadow: var(--boxShadow1);
 }
 
-section.reel div:hover{
-    height: 34vw;
-    width: 60vw;
-    outline: 100vh solid #0000008f;
-    border-radius: 0;
-    z-index: 15;
-} */
 
 
 
@@ -323,6 +371,7 @@ section.portfolio > div > h3{
     left: -12rem;
     top: 8rem;
     font-size: 2.5em;
+    animation: fadeOut .4s;
 }
 
 section.portfolio > div{
@@ -339,6 +388,9 @@ section.portfolio > div div:first-of-type {
     margin-bottom: -.5rem;
     border-radius: inherit;
     overflow: hidden;
+    background-size: cover;
+	background-position: center;
+	background-repeat: none;
 }
 
 section.portfolio > div div img {
@@ -364,6 +416,13 @@ section.portfolio > div div a{
     transform: translate(0, 1rem);
     background-color: var(--color1T);
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.portfolio > div div a img{
+    width: 2.6rem;
 }
 
 section.portfolio > div div h3{
@@ -374,6 +433,8 @@ section.portfolio > div div h3{
     border-radius: .5rem;
     font-size: 2rem;
     font-weight: 100;
+    white-space: nowrap;
+    /* animation-fill-mode: forwards; */
 }
 
 section.portfolio > div div h3.tooDark {
@@ -386,13 +447,15 @@ section.portfolio > div div p{
     margin: 0;
     padding: 0 .5rem;
     opacity: 0;
+    transition: .3s;
 }
 
 
 /* HOVER */
-/* section.portfolio > div:hover > h3{
-    transform: translate(0, 5rem);
-} */
+section.portfolio > div:hover > h3{
+    transform: translate(17.5rem, 17.5rem);
+    animation: fadeIn .4s;
+}
 
 section.portfolio > div:hover{
     box-shadow: var(--boxShadow4);
@@ -403,6 +466,16 @@ section.portfolio > div:hover div a{
     height: var(--linkSize);
     margin-bottom: calc(var(--linkSize) * -1);
     opacity: 1;
+}
+
+@keyframes linkPop {
+    from,to {opacity: 1; transform: translate(0);}
+    50% {opacity: .5; transform: translate(0, -.3rem);}
+}
+
+section.portfolio > div:hover div a img{
+    animation: linkPop 1s;
+    animation-delay: .2s;
 }
 
 section.portfolio > div:hover div h3{
@@ -422,11 +495,78 @@ section.portfolio > div:hover div p{
     opacity: 1;
 }
 
-section.portfolio > div:hover div img{
+section.portfolio > div:hover > div > img{
     transform: scale(1.15);
 }
 
+/* LINK HOVER */
 
+section.portfolio > div div a:hover{
+    box-shadow: var(--boxShadow3);
+}
+
+section.portfolio > div div a:hover img{
+    opacity: .6; 
+    transform: translate(0, -.1rem);
+}
+
+
+/* JAZZ and others*/
+
+.yt > div:first-of-type{
+    height: calc(97vw / 16 * 9);
+    max-height: calc(var(--secWidth) / 16 * 9);
+}
+
+.yt div h3 {
+    opacity: 0;
+}
+
+.yt:hover div h3{
+    opacity: 1;
+}
+
+.jazz:hover > div:first-of-type img,
+.vid:hover > div:first-of-type img{
+    opacity: 0;
+}
+
+.jazz > div:first-of-type {
+    background-image: url(../c/portfolio/jazz/1.jpg);
+}
+
+@keyframes jazz {
+    0%, 5% {background-image: url(../c/portfolio/jazz/1.jpg);}
+    10%, 20% {background-image: url(../c/portfolio/jazz/2.jpg);}
+    25%, 35% {background-image: url(../c/portfolio/jazz/3.jpg);}
+    40%, 50% {background-image: url(../c/portfolio/jazz/4.jpg);}
+    55%, 65% {background-image: url(../c/portfolio/jazz/5.jpg);}
+    70%, 80% {background-image: url(../c/portfolio/jazz/6.jpg);}
+    85%, 100% {background-image: url(../c/portfolio/jazz/7.jpg);}
+}
+
+.jazz:hover > div:first-of-type {
+    animation: jazz 4s forwards .5s;
+}
+
+.vid > div:first-of-type {
+    background-image: url(../c/portfolio/vid/1.png);
+}
+
+@keyframes vid {
+    0%, 10% {background-image: url(../c/portfolio/vid/1.png);}
+    12%, 22% {background-image: url(../c/portfolio/vid/2.png);}
+    24%, 34% {background-image: url(../c/portfolio/vid/3.png);}
+    36%, 46% {background-image: url(../c/portfolio/vid/4.png);}
+    48%, 58% {background-image: url(../c/portfolio/vid/5.png);}
+    60%, 70% {background-image: url(../c/portfolio/vid/6.png);}
+    72%, 82% {background-image: url(../c/portfolio/vid/7.png);}
+    84%, 100% {background-image: url(../c/portfolio/vid/8.png);}
+}
+
+.vid:hover > div:first-of-type {
+    animation: vid 10s forwards;
+}
 
 
 /* GALLERY */
@@ -452,7 +592,9 @@ section.gallery > div img {
     0%{filter: blur(0px);}
     .1%{filter: blur(30px);}
     20%,80%{filter: blur(0px);}
-    100%{filter: blur(30px);}
+    99.9%{filter: blur(30px);}
+    100%{filter: blur(0px);}
+
 }
 
 /* ABOUT */
@@ -461,8 +603,42 @@ section.about{
     column-count: 2;
 }
 
+section.about p{
+    line-height: 1.2em; 
+    letter-spacing: 0.02em;   
+}
 
 
+
+
+
+
+
+
+
+/* CURSOR */
+
+/* .mf-cursor {
+    width: 40px;
+    height: 40px;
+    background-color:var(--color1) ;
+    border-radius: 50%;
+    margin: -20px 0 0 -20px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  } */
+
+
+  .mf-cursor{
+    opacity: 0;
+    color: var(--offBlack);
+}
 
 
 
@@ -518,6 +694,10 @@ section.about{
 /* lg */
 @media (min-width: 1024px) {
 
+    nav{
+        padding: 0 2rem;
+    }
+
     h1{
         margin-top: -6.5vw;
         font-size: 45.7vw;
@@ -532,7 +712,7 @@ section.about{
         /* position: absolute; */
         /* margin-left: 4rem; */
         right: -2rem;
-        bottom: -15vh;
+        bottom: -14vh;
         width: 1px;
         min-width: 1px;
     }
@@ -548,23 +728,11 @@ section.about{
     }
 
 
-    /* REEL */
-
-    section.reel div:hover{
-        transform: scale(1.4);
-        outline: 100vh solid #0000008f;
-        border-radius: 0;
-        z-index: 15;
-    }
-
     /* PORTFOLIO */
     section.portfolio > div > h3{
         display: inline;
     }
 
-    /* section.portfolio > div {
-        flex-direction: row;
-    } */
 
     .mf-cursor{
         opacity: 1;
@@ -581,6 +749,69 @@ section.about{
     /* section{
         max-width: 1280px
     } */
+
+    section.portfolio > div{
+        flex-direction: row;
+    }
+    
+    
+    section.portfolio > div div img{
+        width: var(--secWidth);
+    }
+
+    section.portfolio > div div:last-of-type{
+        width: 0;
+        padding: 0;
+    }
+
+    section.portfolio > div div h3{
+        margin-top: 1.5rem;
+        margin-left: calc((var(--secWidth) * -1) + 2rem);
+        /* margin-left: -10rem; */
+        animation: fadeOut .4s;
+    }
+
+    /* H3 LESS OBTRUSIVE GOING BACK AND FORTH ON HOVER */
+    @keyframes fadeIn {
+        from,to {opacity: 1;}
+        50% {opacity: .2;}
+    }
+
+    @keyframes fadeOut {
+        from,to {opacity: 1;}
+        50% {opacity: .2;}
+    }
+
+    /* HOVER */
+
+    section.portfolio > div:hover {
+        width: 180%;
+    }
+    
+    section.portfolio > div:hover div:last-of-type{
+        width: 80%;
+        padding: 2rem;
+    }
+
+    section.portfolio > div:hover div h3{
+        margin: 0;
+        animation: fadeIn .4s;
+    }
+
+    section.portfolio > div div p:first-of-type{
+        margin-top: 1em;
+    }
+
+    section.portfolio > div:hover div img{
+        transform: scale(1);
+        height: 100%;
+    }
+
+    section.portfolio > div:hover div{
+        padding: 0;
+        margin: 0;
+    }
+
 }
 
 /* 2xl */
@@ -634,50 +865,3 @@ section.about{
 
 
 
-/* CURSOR */
-
-/* .mf-cursor {
-    width: 40px;
-    height: 40px;
-    background-color:var(--color1) ;
-    border-radius: 50%;
-    margin: -20px 0 0 -20px;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-  } */
-
-
-.mf-cursor{
-    opacity: 0;
-    color: var(--offBlack);
-}
-
-  /* #cursorDot,
-  #cursorOutline{
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  
-  #cursorDot{
-    height: 5px;
-    width: 5px;
-    background-color: var(--offBlack);
-  }
-
-  #cursorOutline{
-    height: 30px;
-    width: 30px;
-    background-color: var(--color1T);
-  } */
