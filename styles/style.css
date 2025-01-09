@@ -179,9 +179,14 @@ nav ul li:hover{
   /******************/
 
 footer{
-    height: 40rem;
-    background-color: var(--bg);
+    height: 6rem;
+    background-color: var(--color1T);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
 
   /****************/
   /* MAIN STYLING */
@@ -190,6 +195,7 @@ footer{
 main{
     background-color: var(--bg);
     /* box-shadow: var(--boxShadow3); */
+    padding-bottom: 10rem;
 }
 
 main > div:first-of-type{
@@ -566,6 +572,10 @@ section.portfolio > div div a:hover img{
 
 .vid:hover > div:first-of-type {
     animation: vid 10s forwards;
+}
+
+.actor{
+    box-shadow: var(--boxShadow3);
 }
 
 
