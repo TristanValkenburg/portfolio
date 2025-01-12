@@ -22,13 +22,15 @@
   /*********************/
   :root {
     --white:#252525;
-    --bg:#e4ddd6;
+    /* --bg:#e4ddd6; */
+    --bg:#e0d2c2;
     --color1: #D8CCC0;
-    --color1T: #c1ac9955;
+    /* --color1T: #c1ac9955; */
+    --color1T: #b3917255;
     --offWhite: #c8c8c8;
-    --offBlack:#212121;
+    --offBlack:#0f0f0f;
 
-    --darkToDark: linear-gradient(to top, rgb(22, 21, 20), rgb(52, 50, 46));
+    --darkToDark: linear-gradient(to top, rgb(10, 9, 8), rgb(39, 37, 34));
 
     --boxShadow1: rgba(0, 0, 0, 0.4) 0px 20px 60px;
     --boxShadow2: 0 0 2rem rgba(36, 36, 36, 0.16);
@@ -387,6 +389,7 @@ section.portfolio > div{
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--boxShadow3);
 }
 
 section.portfolio > div div:first-of-type {
@@ -394,7 +397,7 @@ section.portfolio > div div:first-of-type {
     margin-bottom: -.5rem;
     border-radius: inherit;
     overflow: hidden;
-    background-size: cover;
+    background-size: contain;
 	background-position: center;
 	background-repeat: none;
 }
@@ -465,7 +468,7 @@ section.portfolio > div:hover > h3{
 
 section.portfolio > div:hover{
     box-shadow: var(--boxShadow4);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 section.portfolio > div:hover div a{
@@ -539,6 +542,8 @@ section.portfolio > div div a:hover img{
 
 .jazz > div:first-of-type {
     background-image: url(../c/portfolio/jazz/1.jpg);
+    height: calc(var(--secWidth) * .62);
+    max-height: calc(97vw * .64);
 }
 
 @keyframes jazz {
@@ -557,7 +562,9 @@ section.portfolio > div div a:hover img{
 
 .vid > div:first-of-type {
     background-image: url(../c/portfolio/vid/1.png);
-}
+    height: calc(var(--secWidth) * .715);
+    max-height: calc(97vw * .75);
+} 
 
 @keyframes vid {
     0%, 10% {background-image: url(../c/portfolio/vid/1.png);}
@@ -574,9 +581,9 @@ section.portfolio > div div a:hover img{
     animation: vid 10s forwards;
 }
 
-.actor{
+/* .actor{
     box-shadow: var(--boxShadow3);
-}
+} */
 
 
 /* GALLERY */
@@ -762,6 +769,7 @@ section.about p{
 
     section.portfolio > div{
         flex-direction: row;
+        margin-bottom: 2rem;
     }
     
     
@@ -801,6 +809,7 @@ section.about p{
     section.portfolio > div:hover div:last-of-type{
         width: 80%;
         padding: 2rem;
+        padding-bottom: 0;
     }
 
     section.portfolio > div:hover div h3{
