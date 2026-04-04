@@ -410,49 +410,81 @@ section.work > div article div p{
     font-family: var(--pFontAlt);
     color: var(--white);
     font-size: 1.2em;
+    line-height: 1.1em;
     text-align: center;
 }
 
 section.work > div article div a{
     position: absolute;
-    height: 0;
-    width: 0;
-    transition: all 0s;
-    transition-delay: .05s;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 
-/* HOVER */
+/* ON CLICK */
 
-section.work > div article:hover div{
+section.work > div article.active div{
     opacity: 1;
 }
 
-section.work > div article:hover > img{
+section.work > div article.active > img{
     filter: blur(.5rem) opacity(.5);
     scale: 1.1;
 }
 
-section.work > div article:hover div h3{
+section.work > div article.active div h3{
     padding-right: 1.3em;
 }
 
-section.work > div article:hover div{
+section.work > div article.active div{
     color: var(--color1);
     border: var(--color1) .4rem solid;
 }
 
-section.work > div article:hover div h3 img{
+section.work > div article.active div h3 img{
     opacity: 1;
     translate: .1em .1em;
 }
 
-section.work > div article:hover div a{
-    height: 100%;
-    width: 100%;
+section.work > div article.active div a{
+    opacity: 1;
+    pointer-events: auto;
 }
 
+/* DESKTOP HOVER */
 
+@media (hover: hover) and (pointer: fine) {
+
+    section.work > div article:hover div{
+        opacity: 1;
+    }
+
+    section.work > div article:hover > img{
+        filter: blur(.5rem) opacity(.5);
+        scale: 1.1;
+    }
+
+    section.work > div article:hover div h3{
+        padding-right: 1.3em;
+    }
+
+    section.work > div article:hover div{
+        color: var(--color1);
+        border: var(--color1) .4rem solid;
+    }
+
+    section.work > div article:hover div h3 img{
+        opacity: 1;
+        translate: .1em .1em;
+    }
+
+    section.work > div article:hover div a{
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+}
 
 /* ABOUT */
 
@@ -541,10 +573,9 @@ section.intro > div > article:has(>a){
 } 
 
 section.intro > div > article > a{
-    margin: 0 .7rem;
-    padding: 0.5rem 1.5rem;
+    margin: 0 .3rem;
+    padding: 0.3rem 1.2rem;
     color: var(--color1);
-    /* background-color: var(--color1T); */
     border: .15rem var(--color1) solid;
     border-radius: 5rem;
 } 
@@ -708,6 +739,7 @@ section.intro > div > article > a:hover{
     section.work > div article div p,
     section.about > div article div p{
         font-size: 1.6em;
+        line-height: normal;    
     }
 
     /* CONTACT and INTRO */
@@ -721,6 +753,11 @@ section.intro > div > article > a:hover{
         font-size: 1.6em;
     } 
     
+    section.intro > div > article > a{
+        margin: 0 .7rem;
+        padding: 0.5rem 1.5rem;
+    } 
+
 }
 
 /* xl */
