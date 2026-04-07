@@ -54,7 +54,7 @@ section.work > div article {
 
     --headerFont: headline-gothic-atf, sans-serif;
     --pFont: aptly, modula-sans, sans-serif;
-    --pFontAlt: barlow, sans-serif;;
+    --pFontAlt: barlow, sans-serif;
 
     --secWidth: 720px;
   }
@@ -99,12 +99,11 @@ h1{
     white-space: nowrap;
     transform: translateX(-50%) scaleX(1.02);
     background-image: var(--darkToDark);
+    transition: none;
     color: transparent;
     background-clip: text;
     z-index: -1;
 }
-
-
 
 h2{
     font-family: var(--headerFont);
